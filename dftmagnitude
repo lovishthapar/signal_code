@@ -1,0 +1,20 @@
+clc
+clear all
+x=[1 2 3 4];
+N=length(x);
+X=[];
+y=0;
+for k=0:N-1
+for n=0:N-1
+y=y+x(n+1)*exp(-j*2*pi*n*k/N);
+end
+X=[X y]
+y=0;
+end
+subplot(1,2,1)
+stem(abs(X));
+title('DFT magnitude response using loops');
+subplot(1,2,2)
+F=fft(x,N)
+stem(abs(F));
+title('DFT magnitude response using fft')
